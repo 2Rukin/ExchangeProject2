@@ -23,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @AutoConfigureMockMvc
-@RunWith(Runner.class)
+//@RunWith(Runner.class)
 class PaymentRestControllerTest extends IntegrationTestBase {
 
     @Autowired

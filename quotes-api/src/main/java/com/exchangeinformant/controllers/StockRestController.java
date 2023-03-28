@@ -44,8 +44,8 @@ public class StockRestController {
     @GetMapping("/stock/query")
     @UserInfoInsertion
     public Stock getStockWithParameters(@RequestParam(name = "dateFrom", required = false, defaultValue = "#{T(java.time.LocalDateTime).now().toLocalDate().atStartOfDay()}") LocalDateTime dateFrom,
-                                                    @RequestParam(name = "dateTo", required = false, defaultValue = "#{T(java.time.LocalDateTime).now()}") LocalDateTime dateTo,
-                                                    @RequestParam("stock") @Parameter(description = "SecureCode акции (тикер)") String secureCode) {
+                                        @RequestParam(name = "dateTo", required = false, defaultValue = "#{T(java.time.LocalDateTime).now()}") LocalDateTime dateTo,
+                                        @RequestParam("stock") @Parameter(description = "SecureCode акции (тикер)") String secureCode) {
         return stockDbService.getStockByDate(secureCode, dateFrom, dateTo);
     }
 
@@ -53,15 +53,14 @@ public class StockRestController {
     @GetMapping("/allWithDates")
     @UserInfoInsertion
     public List<Stock> getAllStocksByDates(@RequestParam(name = "dateFrom", required = false, defaultValue = "#{T(java.time.LocalDateTime).now().toLocalDate().atStartOfDay()}") LocalDateTime dateFrom,
-                                           @RequestParam(name = "dateTo", required = false, defaultValue = "#{T(java.time.LocalDateTime).now()}") LocalDateTime dateTo)
-    {
+                                           @RequestParam(name = "dateTo", required = false, defaultValue = "#{T(java.time.LocalDateTime).now()}") LocalDateTime dateTo) {
         return stockDbService.getAllStocksByDate(dateFrom, dateTo);
     }
 
     @Operation(summary = "Получение списка всех акций из БД")
     @GetMapping("/all")
     @UserInfoInsertion
-    public List<Stock> getAllStocks(){
+    public List<Stock> getAllStocks() {
         return stockDbService.getAllStocks();
     }
 
